@@ -1,0 +1,54 @@
+@import "tailwindcss";
+body
+{
+    
+    font-family: sans-serif;
+    margin: 0px;
+    #home-header
+    {
+        margin-top: 2px;
+        display: flex;
+        flex-direction: row;
+        height: 50px;
+        width: 100vw;
+        span
+        {
+            margin: 10px;
+            text-align: left;
+            font-size: xx-large;
+            font-weight: 600;
+            width: 85vw;
+            font-family: cursive;
+        }
+        a{
+            text-align: center;
+            margin-top: 6px;
+            padding-top: 7px;
+            margin-right: 10px;
+            border-radius: 20px 20px 20px 20px;
+            text-decoration: none;
+            height: 30px;
+            width: 100px;
+            background-color: rgb(197, 227, 5);
+            color: rgb(210, 139, 6);
+            font-size: medium;
+
+        }
+
+    }
+    main{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;  
+        .main-container{
+            height: 15rem;
+            width: 40rem;
+            background-color: rgb(197, 227, 5);
+            
+            border-radius: 10px 10px;
+
+        }
+    }
+
+}

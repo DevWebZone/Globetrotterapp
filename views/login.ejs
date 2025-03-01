@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            <%=title%>
+        </title>
+        
+        <link rel="stylesheet" type="text/css" href="css/final.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+            body {
+                font-family: 'Fredoka One', cursive;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    </head>
+    <body class="h-full">
+        <header class="flex bg-yellow-300 items-center justify-between" id="home-header">
+            <h1 class="text-orange-400">
+                GlobeTrotter
+            </h1>
+        </header>
+        <main class="bg-blue-400 flex flex-row items-center justify-center h-screen">
+            <div class="h-full flex flex-col items-center justify-center"> 
+                <% if (ref !== ""){ %>
+                    <h1 class="text-center text-xl text-yellow-400 mb-8"><%=ref%> has challenged you to beat their score: <%=score%> </h1>
+                <%}%>         
+                <div id="text-box" class="relative inline-block mb-8 bg-yellow-300 rounded-lg p-6 shadow-lg">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-600 text-white px-4 py-2 rounded-full">
+                        LOGIN
+                    </div>
+                    <div class="login-container flex flex-col items-center" class="active">
+                        <form class="form m-2" id="login-user" action="/login" method="post">
+                            <input class="mt-6 m-4 w-fit bg-white py-2 px-4 rounded-full shadow-lg" id="username" class="user-params" type="text" name="username" placeholder="Enter your Username" required >
+                            <button class="bg-yellow-400 text-white mx-2 mt-2 py-2 px-4 rounded-full shadow-lg transition-all" type="submit" id="log-in-button">Log In</button>
+                        </form>
+                        <p class="text-red-400 text-left text-m"> <%=loginError%></p>
+                    </div>
+                </div>
+                <div id="text-box" class="relative inline-block bg-yellow-300 rounded-lg p-6 shadow-lg">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-600 text-white px-4 py-2 rounded-full">
+                        REGISTER
+                    </div>
+                    <div class="login-container flex flex-col items-center justify-around" class="active">
+                        <form class="form m-2" id="create-user" action="/register" method="post">
+                            <input class="mt-6 m-4 w-fit bg-white py-2 px-4 rounded-full shadow-lg" id="username" class="user-params" type="text" name="username" placeholder="Enter your Username" required >
+                            <button class="bg-yellow-400 text-white mx-2 mt-2 py-2 px-4 rounded-full shadow-lg transition-all" type="submit" id="register-button">Register</button>
+                        </form>
+                        
+                        <p class="text-red-400 text-left text-m"> <%=registerError%></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+       
+        <script src="/js/login.js"></script>
+    </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            <%=title%>
+        </title>
+        
+        <link rel="stylesheet" type="text/css" href="css/final.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+            body {
+                font-family: 'Fredoka One', cursive;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    </head>
+    <body class="h-full">
+        <header class="flex bg-yellow-300 items-center justify-between" id="home-header">
+            <h1 class="text-orange-400">
+                GlobeTrotter
+            </h1>
+            <div>
+                <a id='open-modal'class="transform -translate-x-1/2 -translate-y-1/2 bg-green-600 text-white px-4 py-2 rounded-full">
+                    Challenge a Friend
+                </a>
+                <a href="/sign-out" class="atransform -translate-x-1/2 -translate-y-1/2 bg-green-600 text-white px-4 py-2 rounded-full">
+                    Sign Out
+                </a>
+            </div>
+        </header>
+        <main class="bg-blue-400 flex flex-col items-center h-screen">
+            <div class="bg-yellow-300 rounded-lg mt-30 m-12 py-4 px-8 shadow-lg inline-block">
+                <h1 class="text-center text-xl">Score Card</h1>
+                <div class="flex justify-between mt-2">
+                    <div class="bg-green-400 text-white py-2 px-4 rounded-full shadow-lg">
+                        <span id="correct-answers"><%=lastScore.CorrectAnswer%></span>
+                    </div>
+                    <div class="bg-red-400 text-white py-2 px-4 rounded-full shadow-lg">
+                        <span id="incorrect-answers"><%=lastScore.IncorrectAnswer%></span>
+                    </div>
+                </div>
+            </div> 
+            <div class="text-center">       
+                <div id="text-box" class="relative inline-block bg-yellow-300 rounded-lg p-6 shadow-lg">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-600 text-white px-4 py-2 rounded-full">
+                        GUESS THE DESTINATION
+                    </div>
+                    <div id="question" class="active">
+                        
+                        <% let i = 1 %>
+                        <% for (clue of destination.clues){ %>
+                            <p class="text-left text-xl mt-4"> Clue: <%=i++%> </p>
+                            <p class="text-left text-xl mt-2">  <%=clue%></p>
+                        <%}%>
+                    </div>
+                    <div id="result">
+                        <p id="correct" class="confetti text-brown-700 text-xl mt-8 hidden">Correct Answer</p>
+                        <p id="incorrect" class="sadEmoji text-brown-700 text-xl mt-8 hidden">Incorrect Answer</p>
+                        <div class="relative mt-8" id="fact">
+                            <div class="text-center absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-600 text-white px-4 py-1 rounded-full">
+                                Fun Fact</div>
+                            <p class="bg-yellow-400 text-wrap text-m text-left py-6 px-4 shadow-lg"><%=destination.fun_fact%></p>
+                    
+                        </div>
+                    </div>
+                </div>
+                <div id="options" class="grid grid-cols-2 gap-4 mt-6">
+                    <% for (option of destination.options){ %>
+                        <a href="/check-answer/?city=<%=option.city%>" id="<%=option.index%>" class="bg-yellow-400 text-white py-2 px-4 rounded-full shadow-lg transition-all"><%=option.city%>, <%=option.country%></a>
+                    <%}%>
+                </div>
+                
+                <div id="game-options" class="hidden grid grid-cols-2 gap-4 mt-6">
+                    <a href="/play-again" id="playagain" class="bg-yellow-400 text-white py-2 px-4 rounded-full shadow-lg transition-all">Play Again</a>
+                    <a href="/home" id="next" class="bg-yellow-400 text-white py-2 px-4 rounded-full shadow-lg transition-all">Next</a>
+                </div>
+            </div>
+        </main>
+        <!-- Modal -->
+        <div id="modal" class="absolute top-0 inset-0 flex items-center justify-center bg-gray-400 bg-opacity-25 transition duration-300 hidden">
+            <div class="relative bg-white rounded-lg shadow-lg p-2">
+                <h2 class="absolute top-1/2 left-1/2 text-white text-lg">Challenge your friends to play and beat your score!!</h2>
+                <img class="pb-2" id="random-image" src="https://picsum.photos/500/300" alt="" srcset="">
+                <button id="whatsappButton" class="px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600">
+                    Invite using WhatsApp
+                </button>
+                <a href="/home" id="closeModal" class="mt-4 px-4 py-2 text-gray-700 bg-gray-200 rounded hover:bg-gray-300">
+                    Close
+                </a>
+            </div>
+        </div>
+        <script src="/js/script.js"></script>
+    </body>
+</html>
