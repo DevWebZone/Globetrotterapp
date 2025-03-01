@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/User_db');
+
+require('dotenv').config();
+mongoose.connect(process.env.DATABASE_URL);
 
 const db = mongoose.connection;
 
