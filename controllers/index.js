@@ -151,7 +151,9 @@ module.exports.signup = async function(req, res){
         return res.render('login',{
             title : "Login Page",
             loginError : "",
-            registerError : "Username already exists. Please enter a unique name"
+            registerError : "Username already exists. Please enter a unique name",
+            ref: "",
+            score:""
         });
     } 
     catch (err) 
@@ -176,7 +178,9 @@ module.exports.signin = async function(req, res){
         return res.render('login',{
             title : "Login Page",
             loginError : "Username does not exists. Try again!!",
-            registerError : ""
+            registerError : "",
+            ref: "",
+            score:""
         });
     } 
     catch (err) 
