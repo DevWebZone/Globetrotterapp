@@ -25,15 +25,16 @@ $('#options a').on('click',function(event) {
                 url: '/update-score/?correct='+correctScore+'&incorrect='+inCorrectScore,
                 success: function(data){
                     console.log(data.data);
-                    $("#options").fadeOut(200);
-                    $("#question").removeClass('active');
-                    $("#result").addClass('active');
-                    $("#game-options").addClass('active')
                 },
                 error: function(err){
                     console.log(err.responseText);
                 }
             })
+            
+            $("#options").fadeOut(200);
+            $("#question").removeClass('active');
+            $("#result").addClass('active');
+            $("#game-options").addClass('active')
         },
         error: function(err){
             console.log(err.responseText);
